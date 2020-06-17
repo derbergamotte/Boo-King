@@ -1,0 +1,32 @@
+<!DOCTYPE>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+<title>Books</title>
+<link href="../../css/styles.css" rel="stylesheet" />
+</head>
+<body>
+	<header>
+		<div th:replace="fragments/header :: header(name='Orders', username='User')"></div>
+	</header>
+	<div>
+		<table border="1">
+			<tr>
+				<th id="user">User</th>
+				<th id="book">Book</th>
+				<th id="department">Department</th>
+				<th id="datetake">DateOfTake</th>
+				<th id="datereturn">DateOfReturn</th>
+			</tr>
+			<th:block th:each="order : ${orderList}">
+				<tr th:object="${order}">
+					<td headers="user" th:text="*{userName}"></td>
+					<td headers="book" th:text="*{bookName}"></td>
+					<td headers="department" th:text="*{departmentName}"></td>
+					<td headers="datetake" th:text="${#calendars.format(order.dateOfTakeBook,'yyyy-MM-dd')}"></td>
+					<td headers="datereturn" th:text="${#calendars.format(order.dateOfReturnBook,'yyyy-MM-dd')}"></td>
+				</tr>
+			</th:block>
+		</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+<title>Add department</title>
+<link href="../css/styles.css" rel="stylesheet" />
+<link href="../css/modal.css" rel="stylesheet" />
+</head>
+<body>
+	<header>
+		<div th:replace="fragments/header :: headerunlog(name='Add department')"></div>
+	</header>
+	<div class="form windowform">
+		<form action="#" th:action=@{/admin/departments/adddepartment} th:object=${department} method="post">
+			<input id="name" type="text" placeholder="Name" required th:field="*{name}" class="field"> 
+			<input type="submit" value="Submit" class="button button-success">
+		</form>
+	</div>
+	<div id="result" class="modalDialog">
+		<div>
+			<a href="javascript:history.back()" title="Close" class="close">X</a>
+			<h2>Department was created</h2>
+		</div>
+	</div>
+	<div id="error" class="modalDialog">
+		<div>
+			<a href="javascript:history.back()" title="Close" class="close">X</a>
+			<h2>Can't create this department.</h2>
+		</div>
+	</div>
+	<footer>
+		<div th:insert="~{fragments/footer ::footer}"></div>
+	</footer>
+</body>
+</html>

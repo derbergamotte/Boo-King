@@ -1,0 +1,39 @@
+<!DOCTYPE>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+<title>Books</title>
+<link href="../css/styles.css" rel="stylesheet" />
+<link href="../css/modal.css" rel="stylesheet" />
+</head>
+<body>
+	<header>
+		<div th:replace="fragments/header :: header(name='Books', username='User')"></div>
+	</header>
+	<div>
+		<div th:each="book : ${bookList}" class="form bookform">
+			<div class="leftbookform">
+				<img th:src="@{${book.bookdetail.cover}}"
+					th:alt="${book.bookdetail.title}" alt="" class="bookcover" />
+			</div>
+			<div class="rightbookform">
+				<a th:href="@{/books/{path}(path=${book.id})}" th:text="${book.bookdetail.title}"></a>
+				<h4 th:text="${book.bookdetail.author}"></h4>
+				<div>
+					<h6 th:text="${book.bookdetail.publisher}" class="leftbookform"></h6>
+					<p th:text="${book.bookdetail.isbn}" class="rightbookform"></p>
+				</div>
+				<p th:text="${book.bookdetail.description}"></p>
+			</div>
+		</div>
+	</div>
+	<div id="error" class="modalDialog">
+		<div>
+			<a href="#close" title="Close" class="close">X</a>
+			<h2>This book isn't exist</h2>
+		</div>
+	</div>
+	<footer>
+		<div th:insert="~{fragments/footer ::footer}"></div>
+	</footer>
+</body>
+</html>

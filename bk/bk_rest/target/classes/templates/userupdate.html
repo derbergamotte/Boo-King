@@ -1,0 +1,36 @@
+<!DOCTYPE>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+<title>User edit</title>
+<link href="../../css/styles.css" rel="stylesheet" />
+<link href="../../css/modal.css" rel="stylesheet" />
+</head>
+<body>
+	<header>
+		<div th:replace="fragments/header :: header(name='User edit', username='User')"></div>
+	</header>
+	<div class="form windowform">
+		<form action="#" th:action="@{/users/user/update}" th:object="${userdto}" method="post">
+			<input id="username" type="text" placeholder="Name" th:field="*{username}" class="field"> 
+			<input id="email" type="text" placeholder="Email" th:field="*{email}" class="field"> 
+			<input id="password" type="password" placeholder="Password" th:field="*{password}" class="field"> 
+			<input type="submit"  value="Submit" class="button button-success">
+		</form>
+	</div>
+	<div id="result" class="modalDialog">
+		<div>
+			<a href="javascript:history.back()" title="Close" class="close">X</a>
+			<h2>User was updated</h2>
+		</div>
+	</div>
+	<div id="error" class="modalDialog">
+		<div>
+			<a href="javascript:history.back()" title="Close" class="close">X</a>
+			<h2>Can't update this user.</h2>
+		</div>
+	</div>
+	<footer>
+		<div th:insert="~{fragments/footer ::footer}"></div>
+	</footer>
+</body>
+</html>

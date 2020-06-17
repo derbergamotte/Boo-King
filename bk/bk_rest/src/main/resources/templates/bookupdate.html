@@ -1,0 +1,35 @@
+<!DOCTYPE>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+<title>User edit</title>
+<link href="../../css/styles.css" rel="stylesheet" />
+<link href="../../css/modal.css" rel="stylesheet" />
+</head>
+<body>
+	<header>
+		<div th:replace="fragments/header :: header(name='User edit', username='User')"></div>
+	</header>
+	<div class="form windowform">
+		<form action="#" th:action="@{/books/{path}/update (path = ${bookdetail.id})}" th:object="${bookdetail}" method="post">
+			<input id="title" type="text" placeholder="Title" th:field="*{title}" class="field"> 
+			<input id="author" type="text" placeholder="Author" th:field="*{author}" class="field">
+			<input id="publisher" type="text" placeholder="Publisher" th:field="*{publisher}" class="field"> 
+			<input id="description" type="text" placeholder="Description" th:field="*{description}" class="field"> 
+			<input type="submit" value="Submit" class="button button-success">
+		</form>
+	</div>
+	<div id="result" class="modalDialog">
+		<div>
+			<a href="javascript:history.back()" title="Close" class="close">X</a>
+			<h2>Book was updated</h2>
+		</div>
+	</div>
+	<div id="error" class="modalDialog">
+		<div>
+			<a href="javascript:history.back()" title="Close" class="close">X</a>
+			<h2>Can't update this book.</h2>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+<title>Books page</title>
+<link href="../css/styles.css" rel="stylesheet" />
+<link href="../css/modal.css" rel="stylesheet" />
+</head>
+<body>
+	<header>
+		<div
+			th:replace="fragments/header :: header(name='Add book', username='User')"></div>
+	</header>
+	<br />
+	<div class="form windowform">
+		<form action="" th:action="@{${addbook}}" method="post">
+		
+    		<select th:field="${department.id}" required>
+        		<th:block th:each="department : ${departments}">
+					<option th:value="${department.id}" th:text="${department.name}"></option>
+				</th:block>
+    		</select> 
+    	 
+		
+
+			<input id="isbn" type="text" placeholder="ISBN" required th:field="*{bookdetail.isbn}" class="field"> 
+			<input type="submit" value="Submit" class="button button-success">
+		</form>
+	</div>
+
+	<div id="result" class="modalDialog">
+		<div>
+			<a href="javascript:history.back()" title="Close" class="close">X</a>
+			<h2>Book success created</h2>
+		</div>
+	</div>
+	<div id="error" class="modalDialog">
+		<div>
+			<a href="javascript:history.back()" title="Close" class="close">X</a>
+			<h2>Something went wrong</h2>
+		</div>
+	</div>
+</body>
+</html>

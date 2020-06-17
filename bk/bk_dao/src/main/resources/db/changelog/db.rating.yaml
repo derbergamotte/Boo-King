@@ -1,0 +1,36 @@
+ databaseChangeLog:
+ -  changeSet:
+      id: 1
+      author: ak
+      changes:
+        -  createTable:
+            tableName: rating
+            columns:
+              -  column:
+                  name: id  
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    unique: true
+              -  column:
+                  name: rate
+                  type: TINYINT(2)
+              -  column:
+                  name: comment
+                  type: VARCHAR(255)
+              -  column:
+                  name: book_id  
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: ratingbook
+                    references: book(id)
+              -  column:
+                  name: user_id  
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: ratinguser
+                    references: user(id)

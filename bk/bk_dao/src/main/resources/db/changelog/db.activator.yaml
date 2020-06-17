@@ -1,0 +1,26 @@
+ databaseChangeLog:
+ -  changeSet:
+      id: 1
+      author: ak
+      changes:
+        -  createTable:
+            tableName: activator
+            columns:
+              -  column:
+                  name: id  
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    unique: true
+              -  column:
+                  name: code  
+                  type: VARCHAR(40)
+              -  column:
+                  name: user_id  
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: activatoruser
+                    references: user(id)

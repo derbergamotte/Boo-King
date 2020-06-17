@@ -1,0 +1,36 @@
+<!DOCTYPE>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+<title>Registration</title>
+<link href="../css/styles.css" rel="stylesheet" />
+<link href="../css/modal.css" rel="stylesheet" />
+</head>
+<body>
+	<header>
+		<div th:replace="fragments/header :: headerunlog(name='Sing up')"></div>
+	</header>
+	<div class="form windowform">
+		<form action="#" th:action=@{/signup} th:object=${dto} method="post">
+			<input id="username" type="text" placeholder="Name" required th:field="*{username}" class="field"> 
+			<input id="email" type="text" placeholder="Email" required th:field="*{email}" class="field"> 
+			<input id="password" type="password" placeholder="Password" required th:field="*{password}" class="field">
+			<input type="submit" value="Submit" class="button button-success">
+		</form>
+	</div>
+	<div id="result" class="modalDialog">
+		<div>
+			<a href="javascript:history.back()" title="Close" class="close">X</a>
+			<h2>User was created</h2>
+		</div>
+	</div>
+	<div id="error" class="modalDialog">
+		<div>
+			<a href="javascript:history.back()" title="Close" class="close">X</a>
+			<h2>Can't create this user.</h2>
+		</div>
+	</div>
+	<footer>
+		<div th:insert="~{fragments/footer ::footer}"></div>
+	</footer>
+</body>
+</html>

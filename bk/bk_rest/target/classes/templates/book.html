@@ -1,0 +1,99 @@
+<!DOCTYPE>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+<title>Book</title>
+<link href="../../css/styles.css" rel="stylesheet" />
+<link href="../../css/modal.css" rel="stylesheet" />
+</head>
+<body>
+	<header>
+		<div
+			th:replace="fragments/header :: header(name='Book', username='User')"></div>
+	</header>
+	<div>
+		<div th:object="${book.bookdetail}" class="form bookform">
+			<div class="leftbookform">
+				<img th:src="@{*{cover}}" th:alt="*{title}" alt="" class="bookcover" />
+			</div>
+			<div class="rightbookform">
+				<h2 th:text="*{title}"></h2>
+				<h4 th:text="*{author}"></h4>
+				<p th:text="*{description}"></p>
+				<div>
+				<a th:href="@{{path}/ratings (path = *{id})}" th:text="${book.averageRate}" class="leftbookform"></a>
+				<div class="rightbookform">
+					<h6 th:text="*{publisher}" class="leftbookform"></h6>
+					<p th:text="*{isbn}" class="rightbookform"></p>
+				</div>
+
+				</div>
+				<div>
+					<th:block th:if="${istaken}">
+						<form action="#" th:action="@{{path}/return (path=${book.id})}"
+							method="post">
+							<input type="submit" value="Return book"
+								class="button button-success">
+						</form>
+					</th:block>
+					<th:block th:unless="${istaken}">
+						<form action="#" th:action="@{{path}/take (path=${book.id})}"
+							th:object="${order}" method="post" class="rightbookform">
+							<select th:field="${order.departmentId}" required
+								class="leftbookform">
+								<th:block th:each="department : ${book.listDepartment}">
+									<option th:value="${department.id}"
+										th:text="${department.name}"></option>
+								</th:block>
+							</select> <input type="submit" value="Take book"
+								class="button button-success">
+						</form>
+					</th:block>
+				</div>
+			</div>
+			<a href="#leaveComment">Leave comment</a>
+			<a th:href="@{{path}/update (path = *{id})}">Update</a>
+		</div>
+	</div>
+	<div id="leaveComment" class="modalDialog">
+		<div>
+			<a href="javascript:history.back()" title="Close" class="close">X</a>
+			<h2>Rate please</h2>
+			<div th:object=${rating}>
+				<form action="#" th:action="@{{path}/rate (path=${book.id})}"
+					method="post">
+					<select th:field="*{rate}" class="leftbookform">
+						<option th:each="i : ${#numbers.sequence(1, 5)}" th:value="${i}"
+							th:text="${i}"></option>
+					</select> <input id="comment" type="text" placeholder="Comment"
+						th:field="*{comment}" class="field"> <input type="submit"
+						value="Leave comment" class="button button-success">
+				</form>
+			</div>
+		</div>
+	</div>
+	<div id="take" class="modalDialog">
+		<div>
+			<a href="javascript:history.back()" title="Close" class="close">X</a>
+			<h2>Book was taken</h2>
+		</div>
+	</div>
+	<div id="return" class="modalDialog">
+		<div>
+			<a href="javascript:history.back()" title="Close" class="close">X</a>
+			<h2>Book was returned</h2>
+		</div>
+	</div>
+		<div id="result" class="modalDialog">
+		<div>
+			<a href="javascript:history.back()" title="Close" class="close">X</a>
+			<h2>Success</h2>
+		</div>
+	</div>
+	<div id="error" class="modalDialog">
+		<div>
+			<a href="javascript:history.back()" title="Close" class="close">X</a>
+			<h2>Error</h2>
+		</div>
+	</div>
+</body>
+</html>

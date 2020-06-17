@@ -1,0 +1,25 @@
+<!DOCTYPE>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+<title>Users page</title>
+<link href="../css/styles.css" rel="stylesheet" />
+<link href="../css/modal.css" rel="stylesheet" />
+</head>
+<body>
+	<header>
+		<th:block th:if="${user}">
+			<div th:replace="fragments/header :: header(name='KinkBoo', username='User')"></div>
+		</th:block>
+		<th:block th:unless="${user}">
+			<div th:replace="fragments/header :: headerunlog(name='KinkBoo')"></div>
+		</th:block>
+	</header>
+	<h1>Welcome!</h1>
+	<div id="result" class="modalDialog">
+		<div>
+			<a href="javascript:history.back()" title="Close" class="close">X</a>
+			<h2>User was deleted</h2>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div th:fragment="headerunlog(name)">
+		<h1 th:text="${name}"></h1>
+		<table summary = Departments class="headertable" >
+			<tr>
+				<td class="button"><a th:href="@{/login}">Login</a></td>
+				<td class="button"><a th:href="@{/signup}">Sign up</a></td>
+			</tr>
+		</table>
+	</div>
+	<div th:fragment="header(name, username)">
+		<h1 th:text="${name}"></h1>
+		<table summary = Departments class="headertable">
+			<tr>
+				<td class="button"><a th:href="@{/admin/departments}">Departments</a></td>
+				<td class="button"><a th:href="@{/books/addbook}">Add book</a></td>
+				<td class="button"><a th:href="@{/books}">Books</a></td>
+				<td class="button"><a th:href="@{/orders}">History</a></td>
+				<td class="button"><a th:href="@{/actualorders}">Orders</a></td>
+				<td class="button"><a th:href="@{/users}">Users</a></td>
+				<td class="button"><a th:href="@{/users/user}" th:text="${username}"></a></td>
+				<td class="button"><a th:href="@{/logout}">Logout</a></td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>

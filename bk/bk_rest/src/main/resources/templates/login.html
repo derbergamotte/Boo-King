@@ -1,0 +1,23 @@
+<!DOCTYPE>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+<title>Please sign in</title>
+<link href="../css/styles.css" rel="stylesheet" />
+</head>
+<body>
+	<header>
+		<div th:replace="fragments/header :: headerunlog(name='Login')"></div>
+	</header>
+	<div class="form windowform">
+		<form th:action="@{login}" method="post">
+			<input type="text" name="username" id="username"
+				placeholder="UserName" class="field"> <input type="password"
+				name="password" id="password" placeholder="Password" class="field">
+			<input type="submit" value="Login" class="button button-success">
+		</form>
+	</div>
+	<footer>
+		<div th:insert="~{fragments/footer ::footer}"></div>
+	</footer>
+</body>
+</html>

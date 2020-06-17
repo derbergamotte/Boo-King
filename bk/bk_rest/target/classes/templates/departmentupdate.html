@@ -1,0 +1,34 @@
+<!DOCTYPE>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+<title>Departments</title>
+<link href="../../../css/styles.css" rel="stylesheet" />
+<link href="../../../css/modal.css" rel="stylesheet" />
+</head>
+<body>
+	<header>
+		<div
+			th:replace="fragments/header :: header(name='Departments', username='User')"></div>
+	</header>
+	<br>
+	<div>
+		<form action="#" th:action="@{/admin/departments/{path}/update (path = ${department.id})}" 	th:object=${department} method="post">
+			<input id="name" type="text" placeholder="Name" required
+				th:field="*{name}" class="field"> <input type="submit"
+				value="Submit" class="button button-success">
+		</form>
+	</div>
+	<div id="result" class="modalDialog">
+		<div>
+			<a href="javascript:history.back()" title="Close" class="close">X</a>
+			<h2>Operation went successfully</h2>
+		</div>
+	</div>
+	<div id="error" class="modalDialog">
+		<div>
+			<a href="javascript:history.back()" title="Close" class="close">X</a>
+			<h2>Something went wrong</h2>
+		</div>
+	</div>
+</body>
+</html>

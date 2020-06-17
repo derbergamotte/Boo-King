@@ -1,0 +1,37 @@
+ databaseChangeLog:
+ -  changeSet:
+      id: 1
+      author: ak
+      changes:
+        -  createTable:
+            tableName: bookdetail
+            columns:
+              -  column:
+                  name: id  
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    unique: true		
+              -  column:  
+                  name: title
+                  type: VARCHAR(255)
+              -  column:  
+                  name: author
+                  type: VARCHAR(255)
+              -  column:
+                  name: description
+                  type: TEXT  
+              -  column:  
+                  name: cover
+                  type: varchar(255)
+              -  column:
+                  name: publisher
+                  type: VARCHAR(255)
+              -  column:
+                  name: isbn
+                  type: VARCHAR(15) 
+                  constraints:
+                    nullable: false
+                    unique: true

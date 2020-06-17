@@ -1,0 +1,92 @@
+ databaseChangeLog:
+ -  changeSet:
+      id: 1
+      author: ak
+      changes:
+        -  createTable:
+            tableName: user
+            columns:
+              -  column:
+                  name: id  
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    unique: true		
+              -  column:
+                  name: username
+                  type: VARCHAR(40) 
+                  constraints:
+                    nullable: false
+                    unique: true
+              -  column:
+                  name: email
+                  type: VARCHAR(40) 
+                  constraints:
+                    nullable: false
+                    unique: true
+              -  column:
+                  name: password
+                  type: VARCHAR(100) 
+                  constraints:
+                    nullable: false
+              -  column:
+                  name: enabled
+                  type: TINYINT 
+                  constraints:
+                    nullable: false
+
+ -  changeSet:
+      id: 2
+      author: ak
+      changes:
+        -  createTable:
+            tableName: user_role
+            columns:
+              -  column:
+                  name: user_id  
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: userrole
+                    references: user(id)	
+              -  column:
+                  name: role_id  
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: roleuser
+                    references: role(id)	
+
+ -  changeSet:
+      id: 3
+      author: ak
+      changes:
+        -  insert:
+            tableName: user
+            columns:
+              -  column:
+                  name: id 
+                  value: "1"
+              -  column:
+                  name: username
+                  value: "Root"
+              -  column:
+                  name: email 
+                  value: "G0136@yandex.by"
+              -  column:
+                  name: password
+                  value: "$2a$10$GPoW7EdXkt7QcutMM6rY4ugeAn117XfDRMufQE36uk5Bi/dnn5tcm"
+              -  column:
+                  name: enabled
+                  value: "1"
+        -  insert:
+            tableName: user_role
+            columns:
+              -  column:
+                  name: user_id 
+                  value: "1"
+              -  column:
+                  name: role_id
+                  value: "1"

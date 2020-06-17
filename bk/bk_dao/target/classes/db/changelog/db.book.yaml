@@ -1,0 +1,45 @@
+ databaseChangeLog:
+ -  changeSet:
+      id: 1
+      author: ak
+      changes:
+        -  createTable:
+            tableName: book
+            columns:
+              -  column:
+                  name: id  
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    unique: true	
+              -  column:
+                  name: bookdetail_id  
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: bookbookdetail
+                    references: bookdetail(id)
+
+ -  changeSet:
+      id: 2
+      author: ak
+      changes:
+        -  createTable:
+            tableName: book_department
+            columns:
+              -  column:
+                  name: book_id  
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: bookdepartment
+                    references: book(id)
+              -  column:
+                  name: department_id  
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: departmentbook
+                    references: department(id)

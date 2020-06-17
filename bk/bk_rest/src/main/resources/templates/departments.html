@@ -1,0 +1,55 @@
+<!DOCTYPE>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+<title>Departments</title>
+<link href="../../css/styles.css" rel="stylesheet" />
+<link href="../../css/modal.css" rel="stylesheet" />
+</head>
+<body>
+	<header>
+		<div
+			th:replace="fragments/header :: header(name='Departments', username='User')"></div>
+	</header>
+	<br />
+	<div>
+
+		<table>
+		
+		<th:block th:each="departmentbylist, stat : ${departments}">
+			<tr>
+				<td th:text="${departmentbylist.name}"></td>
+				<td><a th:href="@{/admin/departments/{path}/update (path = ${departmentbylist.id})}">Rename</a></td>
+				<td>
+					<form action="#" th:action="@{/admin/departments/{path}delete(path=${departments[__${stat.index}__].id})}" th:object="${department}" method="post">
+						<input type="submit" value="Delete" class="button button-success">
+					</form>
+				</td>
+			</tr>			
+		</th:block>
+		</table>
+	</div>
+		<a href="#add">Add department</a>
+
+	<div id="add" class="modalDialog">
+		<div>
+			<a href="javascript:history.back()" title="Close" class="close">X</a>
+			<form action="#" th:action=@{/admin/departments/adddepartment} th:object=${department} method="post">
+				<input id="name" type="text" placeholder="Name" required th:field="*{name}" class="field"> 
+				<input type="submit" value="Submit" class="button button-success">
+			</form>
+		</div>
+	</div>
+	<div id="result" class="modalDialog">
+		<div>
+			<a href="#close" title="Close" class="close">X</a>
+			<h2>Operation went successfully</h2>
+		</div>
+	</div>
+	<div id="error" class="modalDialog">
+		<div>
+			<a href="#close" title="Close" class="close">X</a>
+			<h2>Something went wrong</h2>
+		</div>
+	</div>
+</body>
+</html>

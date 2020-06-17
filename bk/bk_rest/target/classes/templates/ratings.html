@@ -1,0 +1,21 @@
+<!DOCTYPE>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+<title>Books</title>
+<link href="../../css/styles.css" rel="stylesheet" />
+</head>
+<body>
+	<header>
+		<div
+			th:replace="fragments/header :: header(name='Rating', username='User')"></div>
+	</header>
+	<div>
+		<th:block th:each="raing : ${ratingList}" >
+			<p th:text="${raing.bookName}"></p>
+			<p th:text="${raing.rate}"></p>
+			<p th:text="${raing.comment}"></p>
+			<p th:text="${raing.userName}"></p>
+		</th:block>
+	</div>
+</body>
+</html>

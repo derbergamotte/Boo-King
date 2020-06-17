@@ -1,0 +1,40 @@
+ databaseChangeLog:
+ -  changeSet:
+      id: 1
+      author: ak
+      changes:
+        -  createTable:
+            tableName: abonne
+            columns:
+              -  column:
+                  name: id  
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    unique: true
+              -  column:
+                  name: date_of_take_book
+                  type: DATETIME
+              -  column:
+                  name: date_of_return_book
+                  type: DATETIME
+              -  column:
+                  name: book_id  
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: orderbook
+                    references: book(id)
+              -  column:
+                  name: department_id  
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: orderdepartment
+                    references: department(id)
+              -  column:
+                  name: user_id  
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: orderuser
+                    references: user(id)
