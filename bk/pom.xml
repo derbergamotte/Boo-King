@@ -12,7 +12,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 
-		<hibernate-core.version>5.4.13.Final</hibernate-core.version>
+		<hibernate-core.version>5.4.24.Final</hibernate-core.version>
 		<hibernate-jpamodelgen.version>5.4.14.Final</hibernate-jpamodelgen.version>
 		<htmlunit.version>2.39.0</htmlunit.version>
 		<javax.mail-api.version>1.6.2</javax.mail-api.version>
