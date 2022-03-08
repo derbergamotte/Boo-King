@@ -16,7 +16,7 @@
 		<hibernate-jpamodelgen.version>5.4.14.Final</hibernate-jpamodelgen.version>
 		<htmlunit.version>2.39.0</htmlunit.version>
 		<javax.mail-api.version>1.6.2</javax.mail-api.version>
-		<liquibase-core.version>3.9.0</liquibase-core.version>
+		<liquibase-core.version>4.8.0</liquibase-core.version>
 		<lombok.version>1.18.12</lombok.version>
 		<mail.version>1.4.7</mail.version>
 		<mysql-connector-java.version>8.0.19</mysql-connector-java.version>
