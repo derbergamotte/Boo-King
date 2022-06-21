@@ -19,7 +19,7 @@
 		<liquibase-core.version>3.9.0</liquibase-core.version>
 		<lombok.version>1.18.12</lombok.version>
 		<mail.version>1.4.7</mail.version>
-		<mysql-connector-java.version>8.0.19</mysql-connector-java.version>
+		<mysql-connector-java.version>8.0.28</mysql-connector-java.version>
 		<spring-boot-starter-data-jpa.version>2.3.1.RELEASE</spring-boot-starter-data-jpa.version>
 		<spring-boot-starter-mail.version>2.3.1.RELEASE</spring-boot-starter-mail.version>
 		<spring-boot-starter-security.version>2.3.1.RELEASE</spring-boot-starter-security.version>
